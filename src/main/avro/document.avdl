@@ -1,0 +1,18 @@
+@namespace("com.avro.document")
+protocol AvroDocument {
+
+  @namespace("com.avro.document")
+  record Attachment {
+    union {string, null} url;
+    union {string, null} type;
+    union {string, null} description;
+  }
+
+  @namespace("com.avro.document")
+  record Document {
+    string _id;
+    union {string, null} text;
+    union {@java-class("java.util.ArrayList") array<com.avro.document.Attachment>, null} attachments;
+  }
+
+}
