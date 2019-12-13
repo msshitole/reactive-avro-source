@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.function.Supplier;
 
 @SpringBootApplication
-//@EnableBinding(Source.class)
 public class ReactiveAvroSourceApplication {
 
     public static void main(String[] args) {
