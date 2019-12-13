@@ -4,10 +4,8 @@ import com.avro.document.Attachment;
 import com.avro.document.Document;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.annotation.StreamMessageConverter;
-import org.springframework.cloud.stream.messaging.Source;
-import org.springframework.cloud.stream.schema.avro.AvroSchemaMessageConverter;
+import org.springframework.cloud.schema.registry.avro.AvroSchemaMessageConverter;
+import org.springframework.cloud.schema.registry.avro.AvroSchemaServiceManagerImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.messaging.converter.MessageConverter;
 import org.springframework.util.MimeType;
@@ -27,16 +25,15 @@ public class ReactiveAvroSourceApplication {
     }
 
     @Bean
-    public Supplier<Flux<Document>> emit() {
+    public Supplier<Flux<Document>> produce() {
         return () -> Flux.interval(Duration.ofMillis(1000))
                          .map(id -> mapDocument(id))
                          .log();
     }
 
     @Bean
-    @StreamMessageConverter
-    public MessageConverter documentMessageConverter() {
-        AvroSchemaMessageConverter converter = new AvroSchemaMessageConverter(MimeType.valueOf("avro/bytes"));
+    public MessageConverter avroDocumentMessageConverter() {
+        AvroSchemaMessageConverter converter = new AvroSchemaMessageConverter(MimeType.valueOf("avro/bytes"), new AvroSchemaServiceManagerImpl());
         converter.setSchema(Document.getClassSchema());
         return converter;
     }
