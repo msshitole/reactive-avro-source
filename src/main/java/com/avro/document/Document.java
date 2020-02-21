@@ -5,13 +5,12 @@
  */
 package com.avro.document;
 
-import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
-import org.apache.avro.util.Utf8;
 import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
+@SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Document extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -4390977065193322442L;
@@ -27,16 +26,7 @@ public class Document extends org.apache.avro.specific.SpecificRecordBase implem
       new BinaryMessageDecoder<Document>(MODEL$, SCHEMA$);
 
   /**
-   * Return the BinaryMessageEncoder instance used by this class.
-   * @return the message encoder used by this class
-   */
-  public static BinaryMessageEncoder<Document> getEncoder() {
-    return ENCODER;
-  }
-
-  /**
    * Return the BinaryMessageDecoder instance used by this class.
-   * @return the message decoder used by this class
    */
   public static BinaryMessageDecoder<Document> getDecoder() {
     return DECODER;
@@ -45,27 +35,17 @@ public class Document extends org.apache.avro.specific.SpecificRecordBase implem
   /**
    * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
-   * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<Document> createDecoder(SchemaStore resolver) {
     return new BinaryMessageDecoder<Document>(MODEL$, SCHEMA$, resolver);
   }
 
-  /**
-   * Serializes this Document to a ByteBuffer.
-   * @return a buffer holding the serialized data for this instance
-   * @throws java.io.IOException if this instance could not be serialized
-   */
+  /** Serializes this Document to a ByteBuffer. */
   public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
     return ENCODER.encode(this);
   }
 
-  /**
-   * Deserializes a Document from a ByteBuffer.
-   * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a Document instance decoded from the given buffer
-   * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
-   */
+  /** Deserializes a Document from a ByteBuffer. */
   public static Document fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
@@ -94,7 +74,6 @@ public class Document extends org.apache.avro.specific.SpecificRecordBase implem
     this.attachments = attachments;
   }
 
-  public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
@@ -125,7 +104,6 @@ public class Document extends org.apache.avro.specific.SpecificRecordBase implem
     return _id;
   }
 
-
   /**
    * Sets the value of the '_id' field.
    * @param value the value to set.
@@ -142,7 +120,6 @@ public class Document extends org.apache.avro.specific.SpecificRecordBase implem
     return text;
   }
 
-
   /**
    * Sets the value of the 'text' field.
    * @param value the value to set.
@@ -158,7 +135,6 @@ public class Document extends org.apache.avro.specific.SpecificRecordBase implem
   public java.util.List<com.avro.document.Attachment> getAttachments() {
     return attachments;
   }
-
 
   /**
    * Sets the value of the 'attachments' field.
@@ -182,11 +158,7 @@ public class Document extends org.apache.avro.specific.SpecificRecordBase implem
    * @return A new Document RecordBuilder
    */
   public static com.avro.document.Document.Builder newBuilder(com.avro.document.Document.Builder other) {
-    if (other == null) {
-      return new com.avro.document.Document.Builder();
-    } else {
-      return new com.avro.document.Document.Builder(other);
-    }
+    return new com.avro.document.Document.Builder(other);
   }
 
   /**
@@ -195,11 +167,7 @@ public class Document extends org.apache.avro.specific.SpecificRecordBase implem
    * @return A new Document RecordBuilder
    */
   public static com.avro.document.Document.Builder newBuilder(com.avro.document.Document other) {
-    if (other == null) {
-      return new com.avro.document.Document.Builder();
-    } else {
-      return new com.avro.document.Document.Builder(other);
-    }
+    return new com.avro.document.Document.Builder(other);
   }
 
   /**
@@ -225,15 +193,15 @@ public class Document extends org.apache.avro.specific.SpecificRecordBase implem
       super(other);
       if (isValidValue(fields()[0], other._id)) {
         this._id = data().deepCopy(fields()[0].schema(), other._id);
-        fieldSetFlags()[0] = other.fieldSetFlags()[0];
+        fieldSetFlags()[0] = true;
       }
       if (isValidValue(fields()[1], other.text)) {
         this.text = data().deepCopy(fields()[1].schema(), other.text);
-        fieldSetFlags()[1] = other.fieldSetFlags()[1];
+        fieldSetFlags()[1] = true;
       }
       if (isValidValue(fields()[2], other.attachments)) {
         this.attachments = data().deepCopy(fields()[2].schema(), other.attachments);
-        fieldSetFlags()[2] = other.fieldSetFlags()[2];
+        fieldSetFlags()[2] = true;
       }
     }
 
@@ -242,7 +210,7 @@ public class Document extends org.apache.avro.specific.SpecificRecordBase implem
      * @param other The existing instance to copy.
      */
     private Builder(com.avro.document.Document other) {
-      super(SCHEMA$);
+            super(SCHEMA$);
       if (isValidValue(fields()[0], other._id)) {
         this._id = data().deepCopy(fields()[0].schema(), other._id);
         fieldSetFlags()[0] = true;
@@ -264,7 +232,6 @@ public class Document extends org.apache.avro.specific.SpecificRecordBase implem
     public java.lang.String getId$1() {
       return _id;
     }
-
 
     /**
       * Sets the value of the '_id' field.
@@ -305,7 +272,6 @@ public class Document extends org.apache.avro.specific.SpecificRecordBase implem
       return text;
     }
 
-
     /**
       * Sets the value of the 'text' field.
       * @param value The value of 'text'.
@@ -344,7 +310,6 @@ public class Document extends org.apache.avro.specific.SpecificRecordBase implem
     public java.util.List<com.avro.document.Attachment> getAttachments() {
       return attachments;
     }
-
 
     /**
       * Sets the value of the 'attachments' field.
@@ -386,8 +351,6 @@ public class Document extends org.apache.avro.specific.SpecificRecordBase implem
         record.text = fieldSetFlags()[1] ? this.text : (java.lang.String) defaultValue(fields()[1]);
         record.attachments = fieldSetFlags()[2] ? this.attachments : (java.util.List<com.avro.document.Attachment>) defaultValue(fields()[2]);
         return record;
-      } catch (org.apache.avro.AvroMissingFieldException e) {
-        throw e;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
       }
@@ -412,134 +375,4 @@ public class Document extends org.apache.avro.specific.SpecificRecordBase implem
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
-  @Override protected boolean hasCustomCoders() { return true; }
-
-  @Override public void customEncode(org.apache.avro.io.Encoder out)
-    throws java.io.IOException
-  {
-    out.writeString(this._id);
-
-    if (this.text == null) {
-      out.writeIndex(1);
-      out.writeNull();
-    } else {
-      out.writeIndex(0);
-      out.writeString(this.text);
-    }
-
-    if (this.attachments == null) {
-      out.writeIndex(1);
-      out.writeNull();
-    } else {
-      out.writeIndex(0);
-      long size0 = this.attachments.size();
-      out.writeArrayStart();
-      out.setItemCount(size0);
-      long actualSize0 = 0;
-      for (com.avro.document.Attachment e0: this.attachments) {
-        actualSize0++;
-        out.startItem();
-        e0.customEncode(out);
-      }
-      out.writeArrayEnd();
-      if (actualSize0 != size0)
-        throw new java.util.ConcurrentModificationException("Array-size written was " + size0 + ", but element count was " + actualSize0 + ".");
-    }
-
-  }
-
-  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
-    throws java.io.IOException
-  {
-    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
-    if (fieldOrder == null) {
-      this._id = in.readString();
-
-      if (in.readIndex() != 0) {
-        in.readNull();
-        this.text = null;
-      } else {
-        this.text = in.readString();
-      }
-
-      if (in.readIndex() != 0) {
-        in.readNull();
-        this.attachments = null;
-      } else {
-        long size0 = in.readArrayStart();
-        java.util.List<com.avro.document.Attachment> a0 = this.attachments;
-        if (a0 == null) {
-          a0 = new SpecificData.Array<com.avro.document.Attachment>((int)size0, SCHEMA$.getField("attachments").schema().getTypes().get(0));
-          this.attachments = a0;
-        } else a0.clear();
-        SpecificData.Array<com.avro.document.Attachment> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<com.avro.document.Attachment>)a0 : null);
-        for ( ; 0 < size0; size0 = in.arrayNext()) {
-          for ( ; size0 != 0; size0--) {
-            com.avro.document.Attachment e0 = (ga0 != null ? ga0.peek() : null);
-            if (e0 == null) {
-              e0 = new com.avro.document.Attachment();
-            }
-            e0.customDecode(in);
-            a0.add(e0);
-          }
-        }
-      }
-
-    } else {
-      for (int i = 0; i < 3; i++) {
-        switch (fieldOrder[i].pos()) {
-        case 0:
-          this._id = in.readString();
-          break;
-
-        case 1:
-          if (in.readIndex() != 0) {
-            in.readNull();
-            this.text = null;
-          } else {
-            this.text = in.readString();
-          }
-          break;
-
-        case 2:
-          if (in.readIndex() != 0) {
-            in.readNull();
-            this.attachments = null;
-          } else {
-            long size0 = in.readArrayStart();
-            java.util.List<com.avro.document.Attachment> a0 = this.attachments;
-            if (a0 == null) {
-              a0 = new SpecificData.Array<com.avro.document.Attachment>((int)size0, SCHEMA$.getField("attachments").schema().getTypes().get(0));
-              this.attachments = a0;
-            } else a0.clear();
-            SpecificData.Array<com.avro.document.Attachment> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<com.avro.document.Attachment>)a0 : null);
-            for ( ; 0 < size0; size0 = in.arrayNext()) {
-              for ( ; size0 != 0; size0--) {
-                com.avro.document.Attachment e0 = (ga0 != null ? ga0.peek() : null);
-                if (e0 == null) {
-                  e0 = new com.avro.document.Attachment();
-                }
-                e0.customDecode(in);
-                a0.add(e0);
-              }
-            }
-          }
-          break;
-
-        default:
-          throw new java.io.IOException("Corrupt ResolvingDecoder.");
-        }
-      }
-    }
-  }
 }
-
-
-
-
-
-
-
-
-
-

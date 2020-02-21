@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.schema.registry.avro.AvroSchemaMessageConverter;
 import org.springframework.cloud.schema.registry.avro.AvroSchemaServiceManagerImpl;
 import org.springframework.context.annotation.Bean;
+import org.springframework.integration.support.MessageBuilder;
+import org.springframework.messaging.Message;
 import org.springframework.messaging.converter.MessageConverter;
 import org.springframework.util.MimeType;
 import reactor.core.publisher.Flux;
@@ -24,9 +26,10 @@ public class ReactiveAvroSourceApplication {
     }
 
     @Bean
-    public Supplier<Flux<Document>> produce() {
+    public Supplier<Flux<Message<Document>>> produce() {
         return () -> Flux.interval(Duration.ofMillis(1000))
                          .map(id -> mapDocument(id))
+                         .map(document -> MessageBuilder.withPayload(document).setHeader("payloadId", document.getId$1()).build())
                          .log();
     }
 
