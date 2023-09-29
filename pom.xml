@@ -18,7 +18,7 @@
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>Hoxton.SR2</spring-cloud.version>
-        <avro.version>1.8.2</avro.version>
+        <avro.version>1.11.3</avro.version>
     </properties>
 
     <dependencies>
